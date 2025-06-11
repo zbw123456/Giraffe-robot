@@ -1,142 +1,83 @@
-# Giraffe-robot
-A typical project for Intro to Robotics
+# Giraffe Robot for Q&A Sessions
 
-1. Introduction
-This project presents the design, simulation, and control of a ceiling-mounted robotic arm (“giraffe robot”) to automate microphone delivery to audience members in a conference room during Q&A sessions. The robot is capable of reaching a target location within a 5 × 12 m area with a desired orientation (30° pitch), enhancing efficiency and interactivity in public talks.
+This project implements a ceiling-mounted robot designed to autonomously bring a microphone to participants in a conference room during Q&A sessions. It combines URDF modeling, kinematics, trajectory planning, and inverse dynamics control using the Pinocchio robotics library.
 
-2. System Specifications
-2.1 Workspace and Mounting
-Room height: 4 m
+---
 
-Task space: 5 m × 12 m horizontal area, down to 1 m height
+## 📁 Project Structure
 
-Mounting: Ceiling, center of the room
+```
+.
+├── giraffe_robot.urdf       # URDF model of the giraffe robot
+├── giraffe_robot_control.py # Python script using Pinocchio for control
+└── README.md                # This file
+```
 
-2.2 Degrees of Freedom
-5 DOF Robot with:
+---
 
-2 DoF spherical joint at base (intersecting revolute joints)
+## 🤖 Robot Specifications
 
-1 prismatic joint for linear extension
+- **Mounting**: Ceiling at 4 meters height
+- **Reachable Area**: 5 × 12 meters (horizontal), down to 1 meter height
+- **Degrees of Freedom**: 5
+  - 2 Revolute joints (spherical base)
+  - 1 Prismatic joint (telescopic extension)
+  - 2 Revolute joints (microphone orientation)
+- **End-effector Task**: Reach any location with a 30° pitch orientation of the microphone
 
-2 revolute joints for microphone orientation
+---
 
-3. URDF Model
-Using standard URDF syntax, the robot is modeled with:
+## 🧰 Dependencies
 
-Links: Base, arm, extension, wrist1, wrist2, microphone
+- Python 3.8+
+- [Pinocchio](https://github.com/stack-of-tasks/pinocchio)
+- NumPy
+- Matplotlib
+- Example Robot Data (for utils)
 
-Joints:
+Install with:
 
-joint1: Revolute (yaw)
+```bash
+pip install numpy matplotlib example-robot-data pin
+```
 
-joint2: Revolute (pitch)
+---
 
-joint3: Prismatic (extension)
+## 🚀 How to Run
 
-joint4: Revolute (mic pitch)
+1. Place the `giraffe_robot.urdf` inside a folder named `./urdf`
+2. Run the main control script:
 
-joint5: Revolute (mic roll)
+```bash
+python giraffe_robot_control.py
+```
 
-The coordinate frames are placed to match Figure 2 (side view) and Figure 3 (top view) from the project brief.
+This will:
+- Load the robot model
+- Compute forward kinematics and Jacobians
+- Generate a minimum jerk trajectory
+- Apply task-space computed torque control with null-space optimization
+- Print control torques and plot the trajectory
 
-4. Kinematics
-4.1 Forward Kinematics
-Using transformation matrices or via Pinocchio, the transformation from the base to the end-effector frame is computed:
+---
 
-T
-end-effector
-=
-T
-1
-⋅
-T
-2
-⋅
-T
-3
-⋅
-T
-4
-⋅
-T
-5
-T 
-end-effector
-​
- =T 
-1
-​
- ⋅T 
-2
-​
- ⋅T 
-3
-​
- ⋅T 
-4
-​
- ⋅T 
-5
-​
- 
-4.2 Differential Kinematics
-Jacobian matrix J is computed via Pinocchio for mapping joint velocities to end-effector velocities:
+## 📌 To Do
 
-x
-˙
-=
-J
-(
-q
-)
-q
-˙
-x
-˙
- =J(q) 
-q
-˙
-​
- 
-This is used for control and null-space projection.
+- Implement a time-based simulation loop with integration
+- Add MeshCat or RViz visualization
+- Tune PD gains for 7s settling time without overshoot
+- Add launch files for ROS/Gazebo integration (optional)
 
-5. Dynamics Simulation
-Using Pinocchio’s RNEA (Recursive Newton-Euler Algorithm), we simulate the dynamics:
+---
 
-τ
-=
-M
-(
-q
-)
-q
-¨
-+
-C
-(
-q
-,
-q
-˙
-)
-q
-˙
-+
-g
-(
-q
-)
-τ=M(q) 
-q
-¨
-​
- +C(q, 
-q
-˙
-​
- ) 
-q
-˙
-​
- +g(q)
+## 📷 Visualization
+
+You can visualize the URDF in RViz or using MeshCat via Pinocchio.
+
+---
+
+## 🧠 Authors
+
+- Designed for educational robotics control project.
+- Based on [Pinocchio](https://gepettoweb.laas.fr/doc/stack-of-tasks/pinocchio/master/index.html) dynamics library.
+
