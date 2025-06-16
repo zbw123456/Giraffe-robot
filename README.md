@@ -17,31 +17,6 @@ This project implements a ceiling-mounted robot designed to autonomously bring a
 
 ---
 
-## 🧰 Dependencies
-
-- Python 3.8+
-- [Pinocchio](https://github.com/stack-of-tasks/pinocchio)
-- NumPy
-- Matplotlib
-- Example Robot Data (for utils)
-
-Install with:
-
-```bash
-pip install numpy matplotlib example-robot-data pin
-```
-
----
-
-## 🚀 How to Run
-
-1. Place the `giraffe_robot.urdf` inside a folder named `./urdf`
-2. Run the main control script:
-
-```bash
-python giraffe_robot_control.py
-```
-
 This will:
 - Load the robot model
 - Compute forward kinematics and Jacobians
