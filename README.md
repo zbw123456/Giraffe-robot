@@ -2,16 +2,6 @@
 
 This project implements a ceiling-mounted robot designed to autonomously bring a microphone to participants in a conference room during Q&A sessions. It combines URDF modeling, kinematics, trajectory planning, and inverse dynamics control using the Pinocchio robotics library.
 
----
-
-## 📁 Project Structure
-
-```
-.
-├── giraffe_robot.urdf       # URDF model of the giraffe robot
-├── giraffe_robot_control.py # Python script using Pinocchio for control
-└── README.md                # This file
-```
 
 ---
 
