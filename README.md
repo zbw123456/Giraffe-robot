@@ -1,4 +1,4 @@
-# 🦒 Giraffe Robot Control (C++ Version)
+# 🦒 Giraffe Robot Control
 
 This C++ project implements the modeling, kinematics, and control of a ceiling-mounted robotic arm ("Giraffe Robot") for automated microphone delivery during Q&A sessions.
 
@@ -42,12 +42,7 @@ make
   - RNEA (nonlinear dynamics)
 - ✅ Modular code structure for easy extension
 
-## 🚀 Future Extensions
 
-- [ ] Integrate ROS for real-time deployment
-- [ ] Add inverse kinematics solver
-- [ ] Export trajectory logs (e.g., CSV)
-- [ ] Real-time control with sensor feedback
 
 ## 📎 Notes
 
