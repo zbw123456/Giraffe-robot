@@ -43,6 +43,6 @@ You can visualize the URDF in RViz or using MeshCat via Pinocchio.
 
 ## 🧠 Authors
 
-- Designed for educational robotics control project.
+- Designed for Introduction to robotics course project.
 - Based on [Pinocchio](https://gepettoweb.laas.fr/doc/stack-of-tasks/pinocchio/master/index.html) dynamics library.
 
